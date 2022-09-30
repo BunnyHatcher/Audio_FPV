@@ -465,6 +465,7 @@ GameObject:
   - component: {fileID: 543269241}
   - component: {fileID: 543269240}
   - component: {fileID: 543269242}
+  - component: {fileID: 543269243}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -525,6 +526,19 @@ MonoBehaviour:
   _padSensitivity: {x: 1, y: 1}
   _mouseYLimit: {x: -45, y: 45}
   _cameraActive: 1
+--- !u!114 &543269243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 543269239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5efe4bd47b0538148ad2233a577d19a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 8
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
