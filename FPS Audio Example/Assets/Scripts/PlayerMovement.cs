@@ -6,12 +6,13 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float _speed;
 
-    CharacterController _characterController;
+    // instead of using rigidbody, we use a character controller
+    CharacterController _characterController; 
 
 
     private void Awake()
     {
-        //create a controller
+        //get the controller
         _characterController = GetComponent<CharacterController>();
         
     }
@@ -30,7 +31,6 @@ public class PlayerMovement : MonoBehaviour
         Vector3 move = direction * _speed * Time.deltaTime;
 
         //Create Movement function
-
         _characterController.Move(move);
 
 
