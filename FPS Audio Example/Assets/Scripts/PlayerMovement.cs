@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float _normalSpeed;
+    [SerializeField] private float _normalSpeed = 5;
 
-    [SerializeField] private float _sprintSpeed;
+    [SerializeField] private float _sprintSpeed = 10;
 
     private float _speed;
 
@@ -22,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
         _characterController = GetComponent<CharacterController>();
 
         //get AudioSource
-        _audioSource = gameObject.GetComponent<AudioSource>();
+        _audioSource = GetComponentInChildren<AudioSource>();
         
     }
 
@@ -39,9 +39,14 @@ public class PlayerMovement : MonoBehaviour
 
         //Check if sprinting or not
 
-        if (Input.GetButtonDown("Sprint"))
+        if (Input.GetButton("Sprint"))
         {
             _speed = _sprintSpeed;
+
+            Debug.Log("Sprint pressed");
+
+
+            
         }
 
         else
@@ -49,8 +54,10 @@ public class PlayerMovement : MonoBehaviour
             _speed = _normalSpeed;
         }
 
+
+
         // calculate movement by multiplying direction with speed (and deltatime to make movement frame-rate independent) 
-        Vector3 move = direction * _speed * Time.deltaTime;
+        Vector3 move = direction.normalized * _speed * Time.deltaTime;
 
         //Create Movement function
         _characterController.Move(move);
@@ -58,7 +65,11 @@ public class PlayerMovement : MonoBehaviour
         //set pitch to player speed
         _audioSource.pitch = _characterController.velocity.magnitude / _normalSpeed;
 
+        // Play Footstep Audio
+        //_audioSource.Play();
 
 
     }
+
+
 }
